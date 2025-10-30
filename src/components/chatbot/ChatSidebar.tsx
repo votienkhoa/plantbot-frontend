@@ -32,7 +32,7 @@ export default function ChatSidebar({chatHistory, sidebarOpen, setSidebarOpen, o
                         <div className="flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-primary via-accent to-secondary shadow-lg shadow-primary/20">
                             <Leaf className="w-6 h-6 text-primary-foreground" />
                         </div>
-                        <span className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                        <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             PlantBot
                         </span>
                     </div>
@@ -56,7 +56,7 @@ export default function ChatSidebar({chatHistory, sidebarOpen, setSidebarOpen, o
                 <div className="flex gap-3 align-center text-sidebar-foreground/50  tracking-wider mb-4 px-2">
                     <History className="h-5 w-5"/>
                     <span className="text-xs my-auto font-semibold uppercase">
-                        Recent Chats
+                        History
                     </span>
                 </div>
                 {chatHistory.map((chat) => (
@@ -67,7 +67,7 @@ export default function ChatSidebar({chatHistory, sidebarOpen, setSidebarOpen, o
                         <div className="flex items-center justify-between gap-2">
                             <div className="flex items-center gap-3 flex-1 min-w-0">
                                 <MessageSquare className="w-4 h-4 text-primary flex-shrink-0" />
-                                <h4 className="text-sm text-sidebar-foreground truncate">{chat.title}</h4>
+                                <h4 className="text-xs text-sidebar-foreground truncate">{chat.title}</h4>
                             </div>
                             <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <Button
@@ -91,6 +91,15 @@ export default function ChatSidebar({chatHistory, sidebarOpen, setSidebarOpen, o
             </div>
 
             <div className="p-4 border-t border-sidebar-border/50 space-y-2">
+                <Link href="/">
+                    <Button
+                        variant="ghost"
+                        className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent/50 rounded-xl h-11 font-medium transition-all"
+                    >
+                        <Leaf className="w-4 h-4 mr-3" />
+                        Plant Library
+                    </Button>
+                </Link>
                 <Link href="/">
                     <Button
                         variant="ghost"

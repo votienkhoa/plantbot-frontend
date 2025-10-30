@@ -3,6 +3,10 @@
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import ChatSidebar from "@/components/chatbot/ChatSidebar";
+import{ Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { ImageIcon, Mic, Send} from "lucide-react"
+import MessageList from "@/components/chatbot/MessageList";
 
 interface Message {
     id: string
@@ -47,7 +51,7 @@ export default function PlantBotChat() {
         {
             id: "3",
             title: "Is this seed poisonous?",
-            preview: "aeqweqwe",
+            preview: "abc",
             timestamp: new Date(Date.now() - 259200000),
         },
     ])
@@ -79,7 +83,7 @@ export default function PlantBotChat() {
             const botMessage: Message = {
                 id: (Date.now() + 1).toString(),
                 content:
-                    "That's a great question! I'd be happy to help you with that. Plants are fascinating organisms with unique care requirements. Let me provide you with detailed information based on the latest botanical research and expert recommendations.",
+                    "Good question",
                 sender: "bot",
                 timestamp: new Date(),
             }
@@ -99,13 +103,65 @@ export default function PlantBotChat() {
     }
 
     return (
-        <div className="h-screen flex bg-gradient-to-br from-background via-primary/5 to-accent/10 overflow-hidden relative">
+        <div
+            className="h-screen flex bg-gradient-to-br from-background via-primary/5 to-accent/10 overflow-hidden relative">
             <ChatSidebar
                 chatHistory={chatHistory}
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
                 onNewChat={handleNewChat}
             />
+            <div className="flex-1 flex flex-col min-w-0">
+                {/* Messages Area */}
+                <MessageList messages={messages} isTyping={isTyping} messagesEndRef={messagesEndRef}/>
+
+                {/* Input Area */}
+                <div className="border-t border-primary/20 p-4 bg-card/80 backdrop-blur-xl">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="flex items-end gap-3">
+                            <div className="flex-1 relative">
+                                <Input
+                                    value={inputValue}
+                                    onChange={(e) => setInputValue(e.target.value)}
+                                    onKeyDown={handleKeyPress}
+                                    placeholder="Ask me anything about plants..."
+                                    className="pr-24 py-6 rounded-2xl border-2 border-primary/20 bg-background focus-visible:ring-1 focus-visible:border-primary/30 text-foreground placeholder:text-muted-foreground resize-none shadow-lg"
+                                />
+                                <div className="absolute right-2 bottom-2 flex items-center gap-1">
+                                    <Button
+                                        size="icon"
+                                        variant="ghost"
+                                        className="h-8 w-8 rounded-xl hover:bg-accent/20 hover:text-accent transition-colors"
+                                        onClick={() => {
+                                        }}
+                                    >
+                                        <ImageIcon className="w-4 h-4"/>
+                                    </Button>
+                                    <Button
+                                        size="icon"
+                                        variant="ghost"
+                                        className="h-8 w-8 rounded-xl hover:bg-accent/20 hover:text-accent transition-colors"
+                                        onClick={() => {
+                                        }}
+                                    >
+                                        <Mic className="w-4 h-4"/>
+                                    </Button>
+                                </div>
+                            </div>
+                            <Button
+                                onClick={handleSendMessage}
+                                disabled={!inputValue.trim()}
+                                className="h-12 w-12 rounded-2xl bg-gradient-to-br from-primary via-accent to-secondary hover:from-primary/90 hover:via-accent/90 hover:to-secondary/90 shadow-xl hover:shadow-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed glow-green"
+                            >
+                                <Send className="w-5 h-5 text-primary-foreground"/>
+                            </Button>
+                        </div>
+                        <p className="text-xs text-muted-foreground text-center mt-3">
+                            PlantBot can make mistakes. Consider checking important information.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-)
+    )
 }
