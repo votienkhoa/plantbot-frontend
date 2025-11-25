@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import {Leaf, Plus, X, MessageSquare, Trash2, Edit3, Home, Settings, History} from "lucide-react";
-import { Card } from "@/components/chatbot/ChatHistoryCard";
+import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
 interface ChatHistory {
@@ -54,7 +54,7 @@ export default function ChatSidebar({chatHistory, sidebarOpen, setSidebarOpen, o
             {/*content*/}
             <div className="flex-1 overflow-y-auto p-4 space-y-3">
                 <div className="flex gap-3 align-center text-sidebar-foreground/50  tracking-wider mb-4 px-2">
-                    <History className="h-5 w-5"/>
+                    <History className="h-4 w-4"/>
                     <span className="text-xs my-auto font-semibold uppercase">
                         History
                     </span>
@@ -91,7 +91,7 @@ export default function ChatSidebar({chatHistory, sidebarOpen, setSidebarOpen, o
             </div>
 
             <div className="p-4 border-t border-sidebar-border/50 space-y-2">
-                <Link href="/">
+                <Link href="/library">
                     <Button
                         variant="ghost"
                         className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent/50 rounded-xl h-11 font-medium transition-all"
