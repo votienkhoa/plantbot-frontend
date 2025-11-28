@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'thuonguyenvan-plant-recognition-with-q-a-system-backend.hf.space',
+        pathname: '/plant-images/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'via.placeholder.com',
       },
       {
