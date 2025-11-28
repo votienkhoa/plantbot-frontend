@@ -11,7 +11,8 @@ interface Message {
     timestamp: Date;
     plantResults?: PlantPrediction[];
     sources?: Array<{ plant_name: string; relevance?: number }>;
-    image?: string; // Added image property
+    image?: File | string; // Match types.ts definition
+    selectedPlant?: string;
 }
 
 interface ChatMessageProps {
@@ -31,8 +32,8 @@ export function ChatMessage({ message, onSelectPlant, onNoneMatch }: ChatMessage
             <div className="flex items-start gap-3 max-w-[85%]">
                 <div
                     className={`rounded-2xl px-6 py-4 shadow-md ${isUser
-                            ? "bg-white/80 border border-accent/15 text-card-foreground"
-                            : "bg-white/80 border border-primary/10 text-card-foreground"
+                        ? "bg-white/80 border border-accent/15 text-card-foreground"
+                        : "bg-white/80 border border-primary/10 text-card-foreground"
                         }`}
                 >
                     {message.sender === "bot" && (
