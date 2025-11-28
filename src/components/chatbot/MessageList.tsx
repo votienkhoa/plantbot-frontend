@@ -5,7 +5,7 @@ import type { Message, PlantPrediction } from "@/lib/types";
 interface MessageListProps {
     messages: Message[];
     isTyping: boolean;
-    messagesEndRef: React.RefObject<HTMLDivElement>;
+    messagesEndRef: React.RefObject<HTMLDivElement | null>;
     onSelectPlant?: (prediction: PlantPrediction) => void;
     onNoneMatch?: () => void;
 }
