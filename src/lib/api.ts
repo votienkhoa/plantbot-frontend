@@ -1,7 +1,7 @@
 // API Service for Plant RAG Backend
 import type { Flow1Response, Flow2Response, Flow3Response, Message } from "./types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://thuonguyenvan-plant-recognition-with-q-a-system-backend.hf.space";
 
 class PlantAPIService {
     /**
